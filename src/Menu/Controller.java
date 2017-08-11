@@ -30,7 +30,7 @@ public class Controller {
 
     public void handleOnOptions() throws IOException{
         Scene scene = (Scene) optionsButton.getScene();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Menu/Options.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Options.fxml"));
         scene.setRoot(root);
     }
 
