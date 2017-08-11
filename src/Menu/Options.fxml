@@ -19,6 +19,7 @@
 
                 </items>
             </ComboBox>
+            <Button text="Switch music" onAction="#switchMusic"/>
         </VBox>
     </center>
 
