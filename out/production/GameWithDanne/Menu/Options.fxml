@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -7,25 +9,27 @@
 <?import javafx.scene.text.*?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
-<BorderPane fx:controller="Menu.Controller" fx:id="BorderPane"
-            xmlns:fx="http://javafx.com/fxml">
+
+<BorderPane fx:id="BorderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Menu.Controller">
 
     <stylesheets>
-        <URL value="@../css.css"/>
+        <URL value="@../css.css" />
     </stylesheets>
 
     <center>
         <VBox fx:id="Vbox">
-            <ComboBox>
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="September Shed" />
-                        <String fx:value="Espen" />
-                        <String fx:value="JW" />
-                    </FXCollections>
-                </items>
-            </ComboBox>
-            <Button text="Switch music" onAction="#switchMusic"/>
+           <children>
+               <ComboBox prefHeight="18.0" prefWidth="198.0">
+                   <items>
+                       <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="September Shed" />
+                           <String fx:value="Espen" />
+                           <String fx:value="JW" />
+                       </FXCollections>
+                   </items>
+               </ComboBox>
+               <Button onAction="#switchMusic" text="Switch music" />
+           </children>
         </VBox>
     </center>
 
