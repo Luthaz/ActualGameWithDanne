@@ -6,11 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
-import java.io.File;
+import javafx.scene.media.AudioClip;
 import java.io.IOException;
+import java.net.URL;
 
 public class Controller {
 
@@ -23,17 +21,11 @@ public class Controller {
     @FXML
     public Button exitButton;
 
-    public MediaPlayer mp;
-
-    public void setMusic(){
-        String music = "src/Music/Hej.mp3";
-        Media hit = new Media(new File(music).toURI().toString());
-        mp = new MediaPlayer(hit);
-    }
+    URL music = getClass().getResource("../Music/Hej.mp3");
+    public AudioClip ac = new AudioClip(music.toString());
 
     public void handleOnStart() {
-        setMusic();
-        mp.play();
+        ac.play();
     }
 
     public void handleOnOptions() throws IOException{
@@ -43,9 +35,7 @@ public class Controller {
     }
 
     public void switchMusic(){
-        setMusic();
-        mp.pause();
-        System.out.println("Dase");
+        ac.stop();
     }
 
     public void handleOnExit() {
