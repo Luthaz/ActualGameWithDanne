@@ -1,7 +1,13 @@
 package Menu;
 
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.File;
 
 public class Controller {
 
@@ -15,14 +21,17 @@ public class Controller {
     public Button exitButton;
 
     public void handleOnStart() {
-        System.out.println("Start");
+        String bip = "src/Images/random.mp3";
+        Media hit = new Media(new File(bip).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(hit);
+        mediaPlayer.play();
     }
 
     public void handleOnOptions() {
-        System.out.println("Options");
+
     }
 
     public void handleOnExit() {
-        System.out.println("Exit");
+        Platform.exit();
     }
 }
