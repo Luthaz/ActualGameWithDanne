@@ -24,8 +24,8 @@ public class Controller {
     public Button exitButton;
 
     public void handleOnStart() {
-        String bip = "src/Images/random.mp3";
-        Media hit = new Media(new File(bip).toURI().toString());
+        String music = "src/Images/random.mp3";
+        Media hit = new Media(new File(music).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(hit);
         mediaPlayer.play();
     }
@@ -34,6 +34,13 @@ public class Controller {
         Scene scene = (Scene) optionsButton.getScene();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Menu/Options.fxml"));
         scene.setRoot(root);
+    }
+
+    public void switchMusic(){
+        String music = "src/Images/random.mp3";
+        Media hit = new Media(new File(music).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(hit);
+        mediaPlayer.stop();
     }
 
     public void handleOnExit() {
