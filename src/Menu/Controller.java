@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.media.AudioClip;
 import java.io.IOException;
 import java.net.URL;
@@ -13,16 +14,22 @@ import java.net.URL;
 public class Controller {
 
     @FXML
-    public Button startButton;
+    private Button startButton;
 
     @FXML
-    public Button optionsButton;
+    private Button optionsButton;
 
     @FXML
-    public Button exitButton;
+    private Button exitButton;
 
-    URL music = getClass().getResource("../Music/Hej.mp3");
-    public AudioClip ac = new AudioClip(music.toString());
+    @FXML
+    private Button musicSwitchButton;
+
+    @FXML
+    private ComboBox musicOptions;
+
+    private URL defaultMusic = getClass().getResource("../Music/Hej.mp3");
+    private AudioClip ac = new AudioClip(defaultMusic.toString());
 
     public void handleOnStart() {
         ac.play();
@@ -34,8 +41,16 @@ public class Controller {
         scene.setRoot(root);
     }
 
-    public void switchMusic(){
-        ac.stop();
+    public void switchMusic(String url){
+        if(ac != null){
+            ac = null;
+        }
+        if(ac.isPlaying()){
+            ac.stop();
+        }
+        URL music = getClass().getResource("../Music/" + musicOptions.getId());
+        AudioClip ac = new AudioClip(music.toString());
+        ac.play();
     }
 
     public void handleOnExit() {

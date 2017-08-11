@@ -22,13 +22,13 @@
                <ComboBox prefHeight="18.0" prefWidth="198.0">
                    <items>
                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="September Shed" />
-                           <String fx:value="Espen" />
-                           <String fx:value="JW" />
+                           <String fx:value="September Shed" fx:id="SeptemberShed" />
+                           <String fx:value="Random" fx:id="random" />
+                           <String fx:value="Surprise" fx:id="Surprise" />
                        </FXCollections>
                    </items>
                </ComboBox>
-               <Button onAction="#switchMusic" text="Switch music" />
+               <Button onAction="#switchMusic" text="Switch music" fx:id="musicSwitch" />
            </children>
         </VBox>
     </center>
