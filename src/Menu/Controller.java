@@ -23,11 +23,17 @@ public class Controller {
     @FXML
     public Button exitButton;
 
-    public void handleOnStart() {
+    public MediaPlayer mp;
+
+    public void setMusic(){
         String music = "src/Music/Hej.mp3";
         Media hit = new Media(new File(music).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(hit);
-        mediaPlayer.play();
+        mp = new MediaPlayer(hit);
+    }
+
+    public void handleOnStart() {
+        setMusic();
+        mp.play();
     }
 
     public void handleOnOptions() throws IOException{
@@ -37,11 +43,9 @@ public class Controller {
     }
 
     public void switchMusic(){
-        String music = "src/Music/random.mp3";
-        Media hit = new Media(new File(music).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(hit);
-        mediaPlayer.play();
-        mediaPlayer.stop();
+        setMusic();
+        mp.pause();
+        System.out.println("Dase");
     }
 
     public void handleOnExit() {
