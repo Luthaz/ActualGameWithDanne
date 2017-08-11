@@ -24,7 +24,7 @@ public class Controller {
     public Button exitButton;
 
     public void handleOnStart() {
-        String music = "src/Images/random.mp3";
+        String music = "src/Music/Hej.mp3";
         Media hit = new Media(new File(music).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(hit);
         mediaPlayer.play();
@@ -37,9 +37,10 @@ public class Controller {
     }
 
     public void switchMusic(){
-        String music = "src/Images/random.mp3";
+        String music = "src/Music/random.mp3";
         Media hit = new Media(new File(music).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(hit);
+        mediaPlayer.play();
         mediaPlayer.stop();
     }
 
