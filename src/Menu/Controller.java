@@ -1,13 +1,16 @@
 package Menu;
 
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Controller {
 
@@ -27,8 +30,10 @@ public class Controller {
         mediaPlayer.play();
     }
 
-    public void handleOnOptions() {
-
+    public void handleOnOptions() throws IOException{
+        Scene scene = (Scene) optionsButton.getScene();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Menu/Options.fxml"));
+        scene.setRoot(root);
     }
 
     public void handleOnExit() {
