@@ -3,9 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * Created by Lukas on 10/08/2017.
- */
+
 public class MainApp extends Application {
     public static void main(String[] args){
         launch(args);

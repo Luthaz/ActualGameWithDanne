@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.media.AudioClip;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -23,12 +24,12 @@ public class Controller {
     private Button exitButton;
 
     @FXML
-    private Button musicSwitchButton;
+    private Button musicSwitch;
 
     @FXML
     private ComboBox musicOptions;
 
-    private URL defaultMusic = getClass().getResource("../Music/Hej.mp3");
+    URL defaultMusic = getClass().getResource("../Music/Hej.mp3");
     private AudioClip ac = new AudioClip(defaultMusic.toString());
 
     public void handleOnStart() {
@@ -39,18 +40,17 @@ public class Controller {
         Scene scene = (Scene) optionsButton.getScene();
         Parent root = FXMLLoader.load(getClass().getResource("Options.fxml"));
         scene.setRoot(root);
+        System.out.println("Options: " + ac.isPlaying());
     }
 
-    public void switchMusic(String url){
-        if(ac != null){
-            ac = null;
+    public void switchMusic(){
+        ac.stop();
+        Object selectedValue = musicOptions.getSelectionModel().getSelectedItem();
+        if(selectedValue != null) {
+            URL music = getClass().getResource("../Music/" + selectedValue + ".mp3");
+            ac = new AudioClip(music.toString());
+            ac.play();
         }
-        if(ac.isPlaying()){
-            ac.stop();
-        }
-        URL music = getClass().getResource("../Music/" + musicOptions.getId());
-        AudioClip ac = new AudioClip(music.toString());
-        ac.play();
     }
 
     public void handleOnExit() {

@@ -3,13 +3,8 @@
 <?import java.lang.*?>
 <?import javafx.collections.*?>
 <?import java.net.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-
 <BorderPane fx:id="BorderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Menu.Controller">
 
     <stylesheets>
@@ -19,16 +14,16 @@
     <center>
         <VBox fx:id="Vbox">
            <children>
-               <ComboBox prefHeight="18.0" prefWidth="198.0">
+               <ComboBox prefHeight="18.0" prefWidth="198.0" fx:id="musicOptions">
                    <items>
                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="September Shed" />
-                           <String fx:value="Espen" />
-                           <String fx:value="JW" />
+                           <String fx:value="Mio" fx:id="Mio" />
+                           <String fx:value="random" fx:id="random" />
+                           <String fx:value="Surprise" fx:id="Surprise" />
                        </FXCollections>
                    </items>
                </ComboBox>
-               <Button onAction="#switchMusic" text="Switch music" />
+               <Button text="Switch music" onAction="#switchMusic" fx:id="musicSwitch" />
            </children>
         </VBox>
     </center>
