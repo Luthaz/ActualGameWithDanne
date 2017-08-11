@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane fx:controller="Menu.Controller" fx:id="BorderPane"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <stylesheets>
+        <URL value="@../css.css"/>
+    </stylesheets>
+
+<center>
+<VBox fx:id="Vbox">
+    <Button text="Start" onAction="#handleOnStart" fx:id="startButton"/>
+    <Button text="Options" onAction="#handleOnOptions" fx:id="optionsButton"/>
+    <Button text="Exit" onAction="#handleOnExit" fx:id="exitButton"/>
+</VBox>
+</center>
+
+</BorderPane>
