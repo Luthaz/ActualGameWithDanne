@@ -24,8 +24,10 @@
                    </items>
                </ComboBox>
                <Button text="Switch music" onAction="#switchMusic" fx:id="musicSwitch" />
+               <Button text="Back to main menu" onAction="#goToMainMenu" fx:id="mainMenuButton"/>
            </children>
         </VBox>
     </center>
+
 
 </BorderPane>

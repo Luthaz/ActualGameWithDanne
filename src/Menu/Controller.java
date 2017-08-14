@@ -24,6 +24,9 @@ public class Controller {
     private Button exitButton;
 
     @FXML
+    private Button mainMenuButton;
+
+    @FXML
     private Button musicSwitch;
 
     @FXML
@@ -37,10 +40,13 @@ public class Controller {
     }
 
     public void handleOnOptions() throws IOException{
-        Scene scene = (Scene) optionsButton.getScene();
+        Scene scene = optionsButton.getScene();
         Parent root = FXMLLoader.load(getClass().getResource("Options.fxml"));
         scene.setRoot(root);
-        System.out.println("Options: " + ac.isPlaying());
+    }
+
+    public void handleOnExit() {
+        Platform.exit();
     }
 
     public void switchMusic(){
@@ -53,7 +59,9 @@ public class Controller {
         }
     }
 
-    public void handleOnExit() {
-        Platform.exit();
+    public void goToMainMenu() throws IOException {
+        Scene scene = mainMenuButton.getScene();
+        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        scene.setRoot(root);
     }
 }
