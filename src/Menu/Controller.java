@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.media.AudioClip;
@@ -32,17 +33,23 @@ public class Controller {
     @FXML
     private ComboBox musicOptions;
 
-    URL defaultMusic = getClass().getResource("../Music/Hej.mp3");
-    private AudioClip ac = new AudioClip(defaultMusic.toString());
+    @FXML
+    private Canvas canvas;
 
-    public void handleOnStart() {
-        ac.play();
+    private static AudioClip ac = null;
+
+    public void handleOnStart() throws IOException{
+        if(ac == null){
+            URL defaultMusic = getClass().getResource("../Music/Hej.mp3");
+            ac = new AudioClip(defaultMusic.toString());
+            //ac.play();
+        }
+
+        changeScene(startButton.getScene(), "Game.fxml");
     }
 
     public void handleOnOptions() throws IOException{
-        Scene scene = optionsButton.getScene();
-        Parent root = FXMLLoader.load(getClass().getResource("Options.fxml"));
-        scene.setRoot(root);
+        changeScene(optionsButton.getScene(), "Options.fxml");
     }
 
     public void handleOnExit() {
@@ -50,7 +57,9 @@ public class Controller {
     }
 
     public void switchMusic(){
-        ac.stop();
+        if(ac != null) {
+            ac.stop();
+        }
         Object selectedValue = musicOptions.getSelectionModel().getSelectedItem();
         if(selectedValue != null) {
             URL music = getClass().getResource("../Music/" + selectedValue + ".mp3");
@@ -60,8 +69,12 @@ public class Controller {
     }
 
     public void goToMainMenu() throws IOException {
-        Scene scene = mainMenuButton.getScene();
-        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-        scene.setRoot(root);
+        changeScene(mainMenuButton.getScene(), "Menu.fxml");
     }
+
+    public void changeScene(Scene currentScene, String filename) throws IOException{
+        Parent newRoot = FXMLLoader.load(getClass().getResource(filename));
+        currentScene.setRoot(newRoot);
+    }
+
 }
